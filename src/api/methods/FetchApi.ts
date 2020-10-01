@@ -1,13 +1,21 @@
-import axios from 'axios'
-import { IGitHubUser, IUserDetails } from '../../model/model'
+import axios from 'axios';
+import { IGitHubUser, IUserDetails } from '../../model/model';
 
-export const getGitHubUsers = async (apiUrl: string): Promise<IGitHubUser[]> => {
-  const { data } = await axios.get(apiUrl)
+const API_URL = 'https://api.github.com/users';
 
-  return data
-}
+export const getGitHubUsers = async (
+  since: number,
+  perPage: number
+): Promise<IGitHubUser[]> => {
+  const { data } = await axios.get(
+    API_URL.concat(`?since=${since}&per_page=${perPage}`)
+  );
+  return data;
+};
 
-export const getGithubUser = async (username: string): Promise<IUserDetails> => {
-  const { data } = await axios.get(`https://api.github.com/users/${username}`)
-  return data
-}
+export const getGithubUser = async (
+  username: string
+): Promise<IUserDetails> => {
+  const { data } = await axios.get(API_URL.concat(`/${username}`));
+  return data;
+};

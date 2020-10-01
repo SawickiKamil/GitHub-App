@@ -12,14 +12,12 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       alignItems: 'center',
       boxSizing: 'border-box',
-      maxWidth: 820,
       [theme.breakpoints.down('xs')]: {
         padding: 10,
       },
     },
     bodyWrapper: {
       display: 'flex',
-      flexGrow: 0.5,
       width: '100%',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -47,10 +45,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: '7%',
       textTransform: 'capitalize',
       [theme.breakpoints.down('sm')]: {
-        fontSize: 20,
+        fontSize: 22,
       },
       [theme.breakpoints.down('xs')]: {
-        fontSize: 16,
+        marginTop: 0,
+        fontSize: 20,
       },
     },
     buttonStyle: {
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 70,
       boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)',
       '&:hover': {
-        backgroundColor: theme.customPalette.orangeOnHover,
+        backgroundColor: theme.customPalette.darkOrange,
       },
       '&:active': {
         boxShadow: 'none',
@@ -67,12 +66,12 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       [theme.breakpoints.down('sm')]: {
         minWidth: 200,
-        height: 50,
+        height: 60,
         fontSize: 16,
       },
       [theme.breakpoints.down('xs')]: {
-        minWidth: 100,
-        height: 30,
+        minWidth: 120,
+        height: 40,
         fontSize: 14,
       },
     },

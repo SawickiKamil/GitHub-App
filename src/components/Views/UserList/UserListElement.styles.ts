@@ -5,21 +5,38 @@ import { Theme } from '@material-ui/core'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     listWrapper: {
+      width: '100%',
+      height: '100%',
       overflowY: 'auto',
-      maxHeight: '75vh',
-      paddingButton: 25,
       '&::-webkit-scrollbar': {
-        width: 13,
-        marginLeft: 10,
+        width: 12,
+        [theme.breakpoints.down('sm')]: {
+          width: 6,
+        },
       },
       '&::-webkit-scrollbar-track': {
-        backgroundColor: theme.customPalette.orangeOnHover,
+        background: 'transparent',
         padding: 0,
       },
       '&::-webkit-scrollbar-thumb': {
         background: theme.customPalette.lightGreen,
         borderRadius: 0,
       },
+    },
+    listWrapperBody: {
+      display: 'block',
+      margin: '0 auto',
+      maxWidth: 900,
+      padding: 30,
+      [theme.breakpoints.down('sm')]: {
+        padding: 20,
+      },
+    },
+    spinnerWrapper: {
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   })
 )

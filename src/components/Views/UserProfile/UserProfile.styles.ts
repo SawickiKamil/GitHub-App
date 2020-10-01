@@ -7,15 +7,25 @@ const useStyles = makeStyles((theme: Theme) =>
     mainWrapper: {
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
       flexDirection: 'column',
-      backgroundColor: theme.customPalette.graphiteBlack,
-      minHeight: '100vh',
+      height: '100%',
       width: '100%',
+      overflowY: 'auto',
+    },
+    contentWrapper: {
+      maxWidth: 900,
+      padding: 30,
+      [theme.breakpoints.down('sm')]: {
+        padding: 20,
+      },
     },
     userDetailsWrapper: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      width: '100%',
+      margin: '0 auto',
     },
     avatarStyle: {
       width: 100,
@@ -75,7 +85,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: 0,
       boxShadow: 'none',
       backgroundColor: 'transparent',
-      marginBottom: 50,
       marginTop: 30,
       fontSize: 16,
       fontWeight: 900,
@@ -85,7 +94,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textTransform: 'uppercase',
       [theme.breakpoints.up('sm')]: {
         width: 450,
-        marginBottom: 150,
       },
       '&:hover': {
         opacity: 0.3,
@@ -107,6 +115,11 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         fontSize: 17,
       },
+    },
+    buttonWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
   })
 )
