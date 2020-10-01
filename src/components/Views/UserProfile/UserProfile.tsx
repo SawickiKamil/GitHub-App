@@ -1,38 +1,19 @@
 import * as React from 'react'
 import useStyles from './UserProfile.styles'
 import { Typography, Link, Button } from '@material-ui/core'
-import { useHistory, useParams } from 'react-router-dom'
 import MainSection from '../../BaseComponents/MainSection'
-import { IUserDetails } from '../../../model/model'
-import { getGithubUser } from '../../../api/methods/FetchApi'
 import CustomCircularProgress from '../../BaseComponents/CustomCircularProgress'
+import { useUserProfile } from './useUserProfile'
 
-interface IUserProfileRouteParams {
-  username?: string
-}
-
-export const UserProfile = () => {
+export const UserProfile: React.FC = () => {
   const classes = useStyles()
-  let history = useHistory()
-  const [user, setUser] = React.useState<IUserDetails>()
+
+  // custom hook
+  const { user, handleButtonClick } = useUserProfile()
+
   const title = 'User Profile Page'
   const publicRepos = user?.public_repos === 0
   const anonymous = ''
-
-  const params: IUserProfileRouteParams = useParams()
-  React.useEffect(() => {
-    const getUserDetails = async () => {
-      if (params.username) {
-        const data = await getGithubUser(params.username)
-        setUser(data)
-      }
-    }
-    getUserDetails()
-  }, [])
-
-  const handleButtonClick = React.useCallback(() => {
-    history.push('/')
-  }, [history])
 
   return (
     <MainSection title={title}>

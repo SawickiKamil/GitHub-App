@@ -88670,7 +88670,9 @@ var __generator = void 0 && (void 0).__generator || function (thisArg, body) {
   }
 };
 
-var getGitHubUsers = function getGitHubUsers(apiUrl) {
+var API_URL = 'https://api.github.com/users';
+
+var getGitHubUsers = function getGitHubUsers(since, perPage) {
   return __awaiter(void 0, void 0, Promise, function () {
     var data;
     return __generator(this, function (_a) {
@@ -88678,7 +88680,7 @@ var getGitHubUsers = function getGitHubUsers(apiUrl) {
         case 0:
           return [4
           /*yield*/
-          , _axios.default.get(apiUrl)];
+          , _axios.default.get(API_URL.concat("?since=" + since + "&per_page=" + perPage))];
 
         case 1:
           data = _a.sent().data;
@@ -88700,7 +88702,7 @@ var getGithubUser = function getGithubUser(username) {
         case 0:
           return [4
           /*yield*/
-          , _axios.default.get("https://api.github.com/users/" + username)];
+          , _axios.default.get(API_URL.concat("/" + username))];
 
         case 1:
           data = _a.sent().data;
@@ -88738,14 +88740,12 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
       marginBottom: 15,
       flexDirection: 'column',
       alignItems: 'center',
-      boxSizing: 'border-box',
-      maxWidth: 820
+      boxSizing: 'border-box'
     }, _a[theme.breakpoints.down('xs')] = {
       padding: 10
     }, _a),
     bodyWrapper: {
       display: 'flex',
-      flexGrow: 0.5,
       width: '100%',
       justifyContent: 'space-between',
       alignItems: 'center'
@@ -88772,9 +88772,10 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
       marginLeft: '7%',
       textTransform: 'capitalize'
     }, _c[theme.breakpoints.down('sm')] = {
-      fontSize: 20
+      fontSize: 22
     }, _c[theme.breakpoints.down('xs')] = {
-      fontSize: 16
+      marginTop: 0,
+      fontSize: 20
     }, _c),
     buttonStyle: (_d = {
       display: 'flex',
@@ -88782,7 +88783,7 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
       height: 70,
       boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)',
       '&:hover': {
-        backgroundColor: theme.customPalette.orangeOnHover
+        backgroundColor: theme.customPalette.darkOrange
       },
       '&:active': {
         boxShadow: 'none',
@@ -88790,11 +88791,11 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
       }
     }, _d[theme.breakpoints.down('sm')] = {
       minWidth: 200,
-      height: 50,
+      height: 60,
       fontSize: 16
     }, _d[theme.breakpoints.down('xs')] = {
-      minWidth: 100,
-      height: 30,
+      minWidth: 120,
+      height: 40,
       fontSize: 14
     }, _d)
   });
@@ -88861,7 +88862,7 @@ Object.defineProperty(exports, "default", {
 var _UserListElement = _interopRequireDefault(require("./UserListElement"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./UserListElement":"src/components/Views/UserList/UserListElement/UserListElement.tsx"}],"src/components/Views/BaseComponents/MainSection.styles.tsx":[function(require,module,exports) {
+},{"./UserListElement":"src/components/Views/UserList/UserListElement/UserListElement.tsx"}],"src/components/BaseComponents/MainSection/MainSection.styles.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -88876,57 +88877,59 @@ var _createStyles = _interopRequireDefault(require("@material-ui/styles/createSt
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _makeStyles.default)(function (theme) {
-  var _a, _b, _c, _d;
+  var _a, _b;
 
   return (0, _createStyles.default)({
     mainWrapper: {
       display: 'flex',
-      alignItems: 'center',
       flexDirection: 'column',
       backgroundColor: theme.customPalette.graphiteBlack,
-      minHeight: '100vh',
-      width: '100%',
-      position: 'relative',
-      overflowY: 'auto'
+      height: '100vh',
+      width: '100%'
     },
-    bodyStyle: (_a = {
+    headerWrapper: {
       display: 'flex',
       alignItems: 'center',
       flexDirection: 'column',
       width: '100%',
-      padding: '30px 20px'
-    }, _a[theme.breakpoints.down('xs')] = {
-      padding: '15px 0'
-    }, _a),
-    footerTextStyle: (_b = {
-      position: 'absolute',
-      bottom: 20,
-      right: 30
-    }, _b[theme.breakpoints.up('sm')] = {
-      bottom: 30,
-      right: 50
-    }, _b),
-    footerLinkStyle: (_c = {
+      flex: '0 0 40px'
+    },
+    footerWrapper: {
+      display: 'flex',
+      flex: '0 0 40px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(30,30,30,.95)'
+    },
+    footerLinkStyle: (_a = {
       color: theme.customPalette.white,
-      fontSize: 11
-    }, _c[theme.breakpoints.up('sm')] = {
       fontSize: 14
-    }, _c),
-    titleStyle: (_d = {
-      marginBottom: 40
-    }, _d[theme.breakpoints.down('xs')] = {
-      fontSize: 40,
-      maxWidth: 300,
-      marginBottom: 20
-    }, _d),
-    progressStyle: {
-      width: '100%'
+    }, _a[theme.breakpoints.down('sm')] = {
+      fontSize: 11
+    }, _a),
+    titleStyle: (_b = {
+      display: 'flex',
+      width: '100%',
+      height: '90px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(30,30,30,.95)'
+    }, _b[theme.breakpoints.down('sm')] = {
+      fontSize: 30,
+      height: '80px'
+    }, _b[theme.breakpoints.down('xs')] = {
+      fontSize: 20,
+      height: '60px'
+    }, _b),
+    sectionWrapper: {
+      flex: '1 1 auto',
+      overflow: 'hidden'
     }
   });
 });
 var _default = useStyles;
 exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/BaseComponents/MainSection.tsx":[function(require,module,exports) {
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/MainSection/MainSection.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -88948,29 +88951,46 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var MainSection = function MainSection(_a) {
   var title = _a.title,
-      children = _a.children,
-      className = _a.className;
+      children = _a.children;
   var classes = (0, _MainSection.default)();
   return React.createElement("main", {
     className: classes.mainWrapper
-  }, React.createElement("div", {
-    className: classes.bodyStyle
+  }, React.createElement("header", {
+    className: classes.headerWrapper
   }, React.createElement(_core.Typography, {
     variant: "h1",
     className: classes.titleStyle
-  }, title), children), React.createElement("footer", {
-    className: classes.footerTextStyle
+  }, title)), React.createElement("section", {
+    className: classes.sectionWrapper
+  }, children), React.createElement("footer", {
+    className: classes.footerWrapper
   }, React.createElement(_core.Typography, {
     className: classes.footerLinkStyle
   }, "This tiny app was created By", ' ', React.createElement(_core.Link, {
     target: "_blank",
-    href: "https://www.linkedin.com/in/kamil-sawicki-a9883a145/"
+    href: "https://github.com/SawickiKamil"
   }, "Kamil Sawicki"))));
 };
 
 var _default = MainSection;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./MainSection.styles":"src/components/Views/BaseComponents/MainSection.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/Views/UserList/UserListElement.styles.ts":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./MainSection.styles":"src/components/BaseComponents/MainSection/MainSection.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/MainSection/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _MainSection.default;
+  }
+});
+
+var _MainSection = _interopRequireDefault(require("./MainSection"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./MainSection":"src/components/BaseComponents/MainSection/MainSection.tsx"}],"src/components/Views/UserList/UserListElement.styles.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -88985,29 +89005,125 @@ var _createStyles = _interopRequireDefault(require("@material-ui/styles/createSt
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a, _b;
+
   return (0, _createStyles.default)({
     listWrapper: {
+      width: '100%',
+      height: '100%',
       overflowY: 'auto',
-      maxHeight: '75vh',
-      paddingButton: 25,
-      '&::-webkit-scrollbar': {
-        width: 13,
-        marginLeft: 10
-      },
+      '&::-webkit-scrollbar': (_a = {
+        width: 12
+      }, _a[theme.breakpoints.down('sm')] = {
+        width: 6
+      }, _a),
       '&::-webkit-scrollbar-track': {
-        backgroundColor: theme.customPalette.orangeOnHover,
+        background: 'transparent',
         padding: 0
       },
       '&::-webkit-scrollbar-thumb': {
         background: theme.customPalette.lightGreen,
         borderRadius: 0
       }
+    },
+    listWrapperBody: (_b = {
+      display: 'block',
+      margin: '0 auto',
+      maxWidth: 900,
+      padding: 30
+    }, _b[theme.breakpoints.down('sm')] = {
+      padding: 20
+    }, _b),
+    spinnerWrapper: {
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   });
 });
 var _default = useStyles;
 exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/UserList/UserList.tsx":[function(require,module,exports) {
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/CustomCircularProgress/customCircularProgress.styles.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
+
+var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a;
+
+  return (0, _createStyles.default)({
+    circularSpinnerRoot: (_a = {
+      display: 'block',
+      margin: '0 auto',
+      height: '70 !important',
+      width: '70 !important',
+      color: theme.customPalette.lightOrange
+    }, _a[theme.breakpoints.down('sm')] = {
+      height: '40 !important',
+      width: '40 !important'
+    }, _a)
+  });
+});
+var _default = useStyles;
+exports.default = _default;
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/CustomCircularProgress/custiomCircularProgress.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _customCircularProgress = _interopRequireDefault(require("./customCircularProgress.styles"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var CustomCircularProgress = function CustomCircularProgress() {
+  var classes = (0, _customCircularProgress.default)();
+  return React.createElement(_core.CircularProgress, {
+    classes: {
+      root: classes.circularSpinnerRoot
+    }
+  });
+};
+
+var _default = CustomCircularProgress;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./customCircularProgress.styles":"src/components/BaseComponents/CustomCircularProgress/customCircularProgress.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/CustomCircularProgress/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _custiomCircularProgress.default;
+  }
+});
+
+var _custiomCircularProgress = _interopRequireDefault(require("./custiomCircularProgress"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./custiomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/custiomCircularProgress.tsx"}],"src/components/Views/UserList/UserList.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89021,13 +89137,13 @@ var _FetchApi = require("../../../api/methods/FetchApi");
 
 var _UserListElement = _interopRequireDefault(require("./UserListElement"));
 
-var _MainSection = _interopRequireDefault(require("../BaseComponents/MainSection"));
+var _MainSection = _interopRequireDefault(require("../../BaseComponents/MainSection"));
 
 var _UserListElement2 = _interopRequireDefault(require("./UserListElement.styles"));
 
 var _reactRouter = require("react-router");
 
-var _core = require("@material-ui/core");
+var _CustomCircularProgress = _interopRequireDefault(require("../../BaseComponents/CustomCircularProgress"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -89220,9 +89336,13 @@ var UserList = function UserList() {
       gitHubUsers = _a[0],
       setGitHubUsers = _a[1];
 
-  var _b = __read(React.useState(false), 2),
-      loading = _b[0],
-      setLoading = _b[1];
+  var _b = __read(React.useState(true), 2),
+      loadingPage = _b[0],
+      setLoadingPage = _b[1];
+
+  var _c = __read(React.useState(false), 2),
+      loadingUsers = _c[0],
+      setLoadingUser = _c[1];
 
   var perPage = 10;
   var title = 'GitHub Application';
@@ -89230,25 +89350,28 @@ var UserList = function UserList() {
   var loadUsers = React.useCallback(function () {
     return __awaiter(void 0, void 0, void 0, function () {
       var lastId, data;
-
-      var _a;
-
-      return __generator(this, function (_b) {
-        switch (_b.label) {
+      return __generator(this, function (_a) {
+        switch (_a.label) {
           case 0:
-            lastId = (_a = Math.max.apply(Math, __spread(gitHubUsers.map(function (item) {
+            lastId = gitHubUsers.length ? Math.max.apply(Math, __spread(gitHubUsers.map(function (item) {
               return item.id;
-            })))) !== null && _a !== void 0 ? _a : 0;
+            }))) : 0;
             return [4
             /*yield*/
-            , (0, _FetchApi.getGitHubUsers)("https://api.github.com/users?since=" + lastId + "&per_page=" + perPage + "&sort=stars&order=desc")];
+            , (0, _FetchApi.getGitHubUsers)(lastId, perPage)];
 
           case 1:
-            data = _b.sent();
-            setInterval(function () {
-              setLoading(true);
-            }, 800);
-            setTimeout;
+            data = _a.sent();
+            return [4
+            /*yield*/
+            , new Promise(function (resolve) {
+              return setTimeout(resolve, 800);
+            })];
+
+          case 2:
+            _a.sent();
+
+            setLoadingPage(false);
             setGitHubUsers(function (prev) {
               return __spread(prev, data);
             });
@@ -89266,18 +89389,51 @@ var UserList = function UserList() {
     loadUsers();
   }, []);
   var handleScrollEvent = React.useCallback(function (event) {
-    var target = event.currentTarget;
+    return __awaiter(void 0, void 0, void 0, function () {
+      var target;
+      return __generator(this, function (_a) {
+        switch (_a.label) {
+          case 0:
+            target = event.currentTarget;
+            if (!(!loadingUsers && target.scrollHeight - target.scrollTop === target.clientHeight)) return [3
+            /*break*/
+            , 3];
+            setLoadingUser(true);
+            return [4
+            /*yield*/
+            , new Promise(function (resolve) {
+              return setTimeout(resolve, 500);
+            })];
 
-    if (target.scrollHeight - target.scrollTop === target.clientHeight) {
-      loadUsers();
-    }
-  }, [gitHubUsers.length]);
+          case 1:
+            _a.sent();
+
+            return [4
+            /*yield*/
+            , loadUsers()];
+
+          case 2:
+            _a.sent();
+
+            setLoadingUser(false);
+            _a.label = 3;
+
+          case 3:
+            return [2
+            /*return*/
+            ];
+        }
+      });
+    });
+  }, [loadingUsers, gitHubUsers.length]);
   return React.createElement(_MainSection.default, {
     className: classes.listWrapper,
     title: title
-  }, loading ? React.createElement("div", {
+  }, !loadingPage ? React.createElement(React.Fragment, null, React.createElement("div", {
     onScroll: handleScrollEvent,
     className: classes.listWrapper
+  }, React.createElement("div", {
+    className: classes.listWrapperBody
   }, gitHubUsers === null || gitHubUsers === void 0 ? void 0 : gitHubUsers.map(function (item) {
     return React.createElement(_UserListElement.default, {
       handleClick: function handleClick() {
@@ -89287,12 +89443,14 @@ var UserList = function UserList() {
       login: item.login,
       avatarUrl: item.avatar_url
     });
-  })) : React.createElement(_core.CircularProgress, null));
+  }), loadingUsers && React.createElement(_CustomCircularProgress.default, null)))) : React.createElement("div", {
+    className: classes.spinnerWrapper
+  }, React.createElement(_CustomCircularProgress.default, null)));
 };
 
 var _default = UserList;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../../api/methods/FetchApi":"src/api/methods/FetchApi.ts","./UserListElement":"src/components/Views/UserList/UserListElement/index.tsx","../BaseComponents/MainSection":"src/components/Views/BaseComponents/MainSection.tsx","./UserListElement.styles":"src/components/Views/UserList/UserListElement.styles.ts","react-router":"node_modules/react-router/esm/react-router.js","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/Views/UserList/index.ts":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../../api/methods/FetchApi":"src/api/methods/FetchApi.ts","./UserListElement":"src/components/Views/UserList/UserListElement/index.tsx","../../BaseComponents/MainSection":"src/components/BaseComponents/MainSection/index.tsx","./UserListElement.styles":"src/components/Views/UserList/UserListElement.styles.ts","react-router":"node_modules/react-router/esm/react-router.js","../../BaseComponents/CustomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/index.tsx"}],"src/components/Views/UserList/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89323,47 +89481,56 @@ var _createStyles = _interopRequireDefault(require("@material-ui/styles/createSt
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _makeStyles.default)(function (theme) {
-  var _a, _b, _c, _d, _e, _f;
+  var _a, _b, _c, _d, _e, _f, _g;
 
   return (0, _createStyles.default)({
     mainWrapper: {
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
       flexDirection: 'column',
-      backgroundColor: theme.customPalette.graphiteBlack,
-      minHeight: '100vh',
-      width: '100%'
+      height: '100%',
+      width: '100%',
+      overflowY: 'auto'
     },
+    contentWrapper: (_a = {
+      maxWidth: 900,
+      padding: 30
+    }, _a[theme.breakpoints.down('sm')] = {
+      padding: 20
+    }, _a),
     userDetailsWrapper: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      width: '100%',
+      margin: '0 auto'
     },
-    avatarStyle: (_a = {
+    avatarStyle: (_b = {
       width: 100,
       height: 100,
       borderRadius: '50%',
       border: "solid 2px " + theme.customPalette.lightOrange,
       marginRight: 20,
       boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)'
-    }, _a[theme.breakpoints.up('sm')] = {
+    }, _b[theme.breakpoints.up('sm')] = {
       border: "solid 4px " + theme.customPalette.lightOrange,
       width: 150,
       height: 150,
       marginRight: 60
-    }, _a),
-    nameStyle: (_b = {
+    }, _b),
+    nameStyle: (_c = {
       marginBottom: 10,
       fontSize: 15,
       letterSpacing: 1.5,
       fontWeight: 'bold',
       color: theme.customPalette.white
-    }, _b[theme.breakpoints.up('sm')] = {
+    }, _c[theme.breakpoints.up('sm')] = {
       fontSize: 20,
       letterSpacing: 2,
       marginBottom: 15
-    }, _b),
-    linkButtonStyle: (_c = {
+    }, _c),
+    linkButtonStyle: (_d = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -89378,22 +89545,21 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
       marginBottom: 20,
       color: theme.customPalette.lightOrange,
       fontSize: 18
-    }, _c[theme.breakpoints.up('sm')] = {
+    }, _d[theme.breakpoints.up('sm')] = {
       width: 450,
       height: 80,
       marginBottom: 30
-    }, _c['&:hover'] = {
+    }, _d['&:hover'] = {
       opacity: 0.8,
       textDecoration: 'none',
       transition: 'all .4s ease'
-    }, _c),
-    backwardsButtonStyle: (_d = {
+    }, _d),
+    backwardsButtonStyle: (_e = {
       width: '100%',
       height: 50,
       borderRadius: 0,
       boxShadow: 'none',
       backgroundColor: 'transparent',
-      marginBottom: 50,
       marginTop: 30,
       fontSize: 16,
       fontWeight: 900,
@@ -89401,52 +89567,48 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
       opacity: 0.2,
       color: theme.customPalette.white,
       textTransform: 'uppercase'
-    }, _d[theme.breakpoints.up('sm')] = {
-      width: 450,
-      marginBottom: 150
-    }, _d['&:hover'] = {
+    }, _e[theme.breakpoints.up('sm')] = {
+      width: 450
+    }, _e['&:hover'] = {
       opacity: 0.3
-    }, _d),
-    amountOfRepositoriesStyle: (_e = {
+    }, _e),
+    amountOfRepositoriesStyle: (_f = {
       fontSize: 13,
       letterSpacing: 1.2,
       color: theme.customPalette.white
-    }, _e[theme.breakpoints.up('sm')] = {
+    }, _f[theme.breakpoints.up('sm')] = {
       fontSize: 15
-    }, _e),
-    userAccountStyle: (_f = {
+    }, _f),
+    userAccountStyle: (_g = {
       fontSize: 15,
       letterSpacing: 1.5,
       marginBottom: 3,
       color: theme.customPalette.white
-    }, _f[theme.breakpoints.up('sm')] = {
+    }, _g[theme.breakpoints.up('sm')] = {
       fontSize: 17
-    }, _f)
+    }, _g),
+    buttonWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    }
   });
 });
 var _default = useStyles;
 exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/UserProfile/UserProfile.tsx":[function(require,module,exports) {
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/UserProfile/useUserProfile.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.UserProfile = void 0;
+exports.useUserProfile = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
-var _UserProfile = _interopRequireDefault(require("./UserProfile.styles"));
-
-var _core = require("@material-ui/core");
-
 var _reactRouterDom = require("react-router-dom");
 
-var _MainSection = _interopRequireDefault(require("../BaseComponents/MainSection"));
-
 var _FetchApi = require("../../../api/methods/FetchApi");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -89622,16 +89784,13 @@ var __read = void 0 && (void 0).__read || function (o, n) {
   return ar;
 };
 
-var UserProfile = function UserProfile(props) {
-  var classes = (0, _UserProfile.default)();
+var useUserProfile = function useUserProfile() {
   var history = (0, _reactRouterDom.useHistory)();
 
   var _a = __read(React.useState(), 2),
       user = _a[0],
       setUser = _a[1];
 
-  var title = 'User Profile Page';
-  var publicRepos = (user === null || user === void 0 ? void 0 : user.public_repos) === 0;
   var params = (0, _reactRouterDom.useParams)();
   React.useEffect(function () {
     var getUserDetails = function getUserDetails() {
@@ -89664,15 +89823,57 @@ var UserProfile = function UserProfile(props) {
     getUserDetails();
   }, []);
   var handleButtonClick = React.useCallback(function () {
-    history.goBack();
+    history.push('/');
   }, [history]);
+  return {
+    user: user,
+    handleButtonClick: handleButtonClick
+  };
+};
 
-  if (!user) {
-    return React.createElement(_core.CircularProgress, null);
-  }
+exports.useUserProfile = useUserProfile;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../../api/methods/FetchApi":"src/api/methods/FetchApi.ts"}],"src/components/Views/UserProfile/UserProfile.tsx":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.UserProfile = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _UserProfile = _interopRequireDefault(require("./UserProfile.styles"));
+
+var _core = require("@material-ui/core");
+
+var _MainSection = _interopRequireDefault(require("../../BaseComponents/MainSection"));
+
+var _CustomCircularProgress = _interopRequireDefault(require("../../BaseComponents/CustomCircularProgress"));
+
+var _useUserProfile = require("./useUserProfile");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var UserProfile = function UserProfile() {
+  var classes = (0, _UserProfile.default)(); // custom hook
+
+  var _a = (0, _useUserProfile.useUserProfile)(),
+      user = _a.user,
+      handleButtonClick = _a.handleButtonClick;
+
+  var title = 'User Profile Page';
+  var publicRepos = (user === null || user === void 0 ? void 0 : user.public_repos) === 0;
+  var anonymous = '';
   return React.createElement(_MainSection.default, {
     title: title
+  }, React.createElement("div", {
+    className: classes.mainWrapper
+  }, !user ? React.createElement(_CustomCircularProgress.default, null) : React.createElement("div", {
+    className: classes.contentWrapper
   }, React.createElement("div", {
     className: classes.userDetailsWrapper
   }, React.createElement("img", {
@@ -89681,24 +89882,26 @@ var UserProfile = function UserProfile(props) {
     alt: user.name
   }), React.createElement("div", null, React.createElement(_core.Typography, {
     className: classes.nameStyle
-  }, " Hi my name is ", user.name), React.createElement(_core.Typography, {
+  }, "Hi ", anonymous ? 'I am anonymous' : "my name is " + user.name), React.createElement(_core.Typography, {
     className: classes.userAccountStyle
   }, "Follow my account - ", user.login), React.createElement(_core.Typography, {
     className: classes.amountOfRepositoriesStyle
-  }, publicRepos ? 'Opsss... I have no public repositories' : "On my GitHub you can find " + user.public_repos + " repositories"))), React.createElement(_core.Link, {
+  }, publicRepos ? 'Opsss... I have no public repositories' : "On my GitHub you can find " + user.public_repos + " repositories"))), React.createElement("div", {
+    className: classes.buttonWrapper
+  }, React.createElement(_core.Link, {
     className: classes.linkButtonStyle,
     target: "_blank",
     href: user.html_url
   }, "Visit my GitHub account"), React.createElement(_core.Button, {
     onClick: handleButtonClick,
     className: classes.backwardsButtonStyle
-  }, "Step Backwards"));
+  }, "Back To The List")))));
 };
 
 exports.UserProfile = UserProfile;
 var _default = UserProfile;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./UserProfile.styles":"src/components/Views/UserProfile/UserProfile.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../BaseComponents/MainSection":"src/components/Views/BaseComponents/MainSection.tsx","../../../api/methods/FetchApi":"src/api/methods/FetchApi.ts"}],"src/components/Views/UserProfile/index.ts":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./UserProfile.styles":"src/components/Views/UserProfile/UserProfile.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","../../BaseComponents/MainSection":"src/components/BaseComponents/MainSection/index.tsx","../../BaseComponents/CustomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/index.tsx","./useUserProfile":"src/components/Views/UserProfile/useUserProfile.ts"}],"src/components/Views/UserProfile/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89803,7 +90006,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55919" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58598" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
