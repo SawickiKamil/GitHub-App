@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IGitHubUser, IUserDetails } from '../../model/model'
+import { IGitHubUser, IUserDetails } from '../../model'
 
 const API_URL = 'https://api.github.com/users'
 

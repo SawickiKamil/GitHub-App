@@ -52,29 +52,6 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: 20,
       },
     },
-    buttonStyle: {
-      display: 'flex',
-      minWidth: 300,
-      height: 70,
-      boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)',
-      '&:hover': {
-        backgroundColor: theme.customPalette.darkOrange,
-      },
-      '&:active': {
-        boxShadow: 'none',
-        transition: 'all .1s ease',
-      },
-      [theme.breakpoints.down('sm')]: {
-        minWidth: 200,
-        height: 60,
-        fontSize: 16,
-      },
-      [theme.breakpoints.down('xs')]: {
-        minWidth: 120,
-        height: 40,
-        fontSize: 14,
-      },
-    },
   })
 )
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { getGitHubUsers } from '../../../api/methods/FetchApi'
-import { IGitHubUser } from '../../../model/model'
+import { IGitHubUser } from '../../../model'
 import { useHistory } from 'react-router'
 
 export const useUserList = () => {

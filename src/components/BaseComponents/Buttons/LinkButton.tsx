@@ -1,13 +1,13 @@
 import * as React from 'react'
 import useStyles from './Buttons.styles'
-import { Button, Link } from '@material-ui/core'
+import { Link } from '@material-ui/core'
 
-interface IBackwardsButtonProps {
+interface ILinkButtonProps {
   href: string
   text: string
 }
 
-const LinkButton = ({ href, text }: IBackwardsButtonProps) => {
+const LinkButton = ({ href, text }: ILinkButtonProps) => {
   const classes = useStyles()
 
   return (

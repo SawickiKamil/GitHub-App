@@ -13,21 +13,19 @@ const UserList: React.FC = () => {
   return (
     <MainSection className={classes.listWrapper} title={title}>
       {!loadingPage ? (
-        <>
-          <div onScroll={handleScrollEvent} className={classes.listWrapper}>
-            <div className={classes.listWrapperBody}>
-              {gitHubUsers?.map((item) => (
-                <UserListElement
-                  handleClick={() => handleButtonClick(item.login)}
-                  key={item.id}
-                  login={item.login}
-                  avatarUrl={item.avatar_url}
-                />
-              ))}
-              {loadingUsers && <CustomCircularProgress />}
-            </div>
+        <div onScroll={handleScrollEvent} className={classes.listWrapper}>
+          <div className={classes.listWrapperBody}>
+            {gitHubUsers?.map(({ login, id, avatar_url }) => (
+              <UserListElement
+                handleClick={() => handleButtonClick(login)}
+                key={id}
+                login={login}
+                avatarUrl={avatar_url}
+              />
+            ))}
+            {loadingUsers && <CustomCircularProgress />}
           </div>
-        </>
+        </div>
       ) : (
         <div className={classes.spinnerWrapper}>
           <CustomCircularProgress />

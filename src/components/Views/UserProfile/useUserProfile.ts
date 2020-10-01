@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { IUserDetails } from '../../../model/model'
+import { IUserDetails } from '../../../model'
 import { getGithubUser } from '../../../api/methods/FetchApi'
 
 interface IUserProfileRouteParams {
