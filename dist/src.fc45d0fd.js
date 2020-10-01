@@ -89691,7 +89691,191 @@ var useStyles = (0, _makeStyles.default)(function (theme) {
 });
 var _default = useStyles;
 exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/UserProfile/useUserProfile.ts":[function(require,module,exports) {
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/Buttons/Buttons.styles.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
+
+var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a, _b;
+
+  return (0, _createStyles.default)({
+    linkButtonStyle: (_a = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 40,
+      width: '100%',
+      height: 70,
+      borderRadius: 3,
+      border: "solid 2px " + theme.customPalette.lightOrange,
+      boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)',
+      backgroundColor: 'transparent',
+      textTransform: 'capitalize',
+      marginBottom: 20,
+      color: theme.customPalette.lightOrange,
+      fontSize: 18
+    }, _a[theme.breakpoints.up('sm')] = {
+      width: 450,
+      height: 80,
+      marginBottom: 30
+    }, _a['&:hover'] = {
+      opacity: 0.8,
+      textDecoration: 'none',
+      transition: 'all .4s ease'
+    }, _a),
+    backwardsButtonStyle: (_b = {
+      width: '100%',
+      height: 50,
+      borderRadius: 0,
+      boxShadow: 'none',
+      backgroundColor: 'transparent',
+      marginTop: 30,
+      fontSize: 16,
+      fontWeight: 900,
+      letterSpacing: 3.5,
+      opacity: 0.2,
+      color: theme.customPalette.white,
+      textTransform: 'uppercase'
+    }, _b[theme.breakpoints.up('sm')] = {
+      width: 450
+    }, _b['&:hover'] = {
+      opacity: 0.3
+    }, _b)
+  });
+});
+var _default = useStyles;
+exports.default = _default;
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/Buttons/BackwardsButton.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _Buttons = _interopRequireDefault(require("./Buttons.styles"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var BackwardsButton = function BackwardsButton(_a) {
+  var onButtonClick = _a.onButtonClick,
+      text = _a.text;
+  var classes = (0, _Buttons.default)();
+  return React.createElement(_core.Button, {
+    onClick: onButtonClick,
+    className: classes.backwardsButtonStyle
+  }, text);
+};
+
+var _default = BackwardsButton;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./Buttons.styles":"src/components/BaseComponents/Buttons/Buttons.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/Buttons/LinkButton.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _Buttons = _interopRequireDefault(require("./Buttons.styles"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var LinkButton = function LinkButton(_a) {
+  var href = _a.href,
+      text = _a.text;
+  var classes = (0, _Buttons.default)();
+  return React.createElement(_core.Link, {
+    className: classes.linkButtonStyle,
+    target: "_blank",
+    href: href
+  }, text);
+};
+
+var _default = LinkButton;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./Buttons.styles":"src/components/BaseComponents/Buttons/Buttons.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/Views/UserProfile/Buttons/Buttons.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _UserProfile = _interopRequireDefault(require("../UserProfile.styles"));
+
+var _BackwardsButton = _interopRequireDefault(require("../../../BaseComponents/Buttons/BackwardsButton"));
+
+var _LinkButton = _interopRequireDefault(require("../../../BaseComponents/Buttons/LinkButton"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var Buttons = function Buttons(_a) {
+  var onButtonClick = _a.onButtonClick,
+      href = _a.href;
+  var classes = (0, _UserProfile.default)();
+  return React.createElement("div", {
+    className: classes.buttonWrapper
+  }, React.createElement(_LinkButton.default, {
+    text: "Visit my GitHub account",
+    href: href
+  }), React.createElement(_BackwardsButton.default, {
+    onButtonClick: onButtonClick,
+    text: "Back To The List"
+  }));
+};
+
+var _default = Buttons;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../UserProfile.styles":"src/components/Views/UserProfile/UserProfile.styles.ts","../../../BaseComponents/Buttons/BackwardsButton":"src/components/BaseComponents/Buttons/BackwardsButton.tsx","../../../BaseComponents/Buttons/LinkButton":"src/components/BaseComponents/Buttons/LinkButton.tsx"}],"src/components/Views/UserProfile/Buttons/index.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _Buttons.default;
+  }
+});
+
+var _Buttons = _interopRequireDefault(require("./Buttons"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./Buttons":"src/components/Views/UserProfile/Buttons/Buttons.tsx"}],"src/components/Views/UserProfile/useUserProfile.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89941,6 +90125,8 @@ var _UserProfile = _interopRequireDefault(require("./UserProfile.styles"));
 
 var _core = require("@material-ui/core");
 
+var _Buttons = _interopRequireDefault(require("./Buttons"));
+
 var _MainSection = _interopRequireDefault(require("../../BaseComponents/MainSection"));
 
 var _CustomCircularProgress = _interopRequireDefault(require("../../BaseComponents/CustomCircularProgress"));
@@ -89982,22 +90168,16 @@ var UserProfile = function UserProfile() {
     className: classes.userAccountStyle
   }, "Follow my account - ", user.login), React.createElement(_core.Typography, {
     className: classes.amountOfRepositoriesStyle
-  }, publicRepos ? 'Opsss... I have no public repositories' : "On my GitHub you can find " + user.public_repos + " repositories"))), React.createElement("div", {
-    className: classes.buttonWrapper
-  }, React.createElement(_core.Link, {
-    className: classes.linkButtonStyle,
-    target: "_blank",
-    href: user.html_url
-  }, "Visit my GitHub account"), React.createElement(_core.Button, {
-    onClick: handleButtonClick,
-    className: classes.backwardsButtonStyle
-  }, "Back To The List")))));
+  }, publicRepos ? 'Opsss... I have no public repositories' : "On my GitHub you can find " + user.public_repos + " repositories"))), React.createElement(_Buttons.default, {
+    href: user.html_url,
+    onButtonClick: handleButtonClick
+  }))));
 };
 
 exports.UserProfile = UserProfile;
 var _default = UserProfile;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./UserProfile.styles":"src/components/Views/UserProfile/UserProfile.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","../../BaseComponents/MainSection":"src/components/BaseComponents/MainSection/index.tsx","../../BaseComponents/CustomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/index.tsx","./useUserProfile":"src/components/Views/UserProfile/useUserProfile.ts"}],"src/components/Views/UserProfile/index.ts":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./UserProfile.styles":"src/components/Views/UserProfile/UserProfile.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js","./Buttons":"src/components/Views/UserProfile/Buttons/index.ts","../../BaseComponents/MainSection":"src/components/BaseComponents/MainSection/index.tsx","../../BaseComponents/CustomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/index.tsx","./useUserProfile":"src/components/Views/UserProfile/useUserProfile.ts"}],"src/components/Views/UserProfile/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

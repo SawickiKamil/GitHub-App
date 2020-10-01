@@ -1,6 +1,7 @@
 import * as React from 'react'
 import useStyles from './UserProfile.styles'
-import { Typography, Link, Button } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
+import Buttons from './Buttons'
 import MainSection from '../../BaseComponents/MainSection'
 import CustomCircularProgress from '../../BaseComponents/CustomCircularProgress'
 import { useUserProfile } from './useUserProfile'
@@ -37,14 +38,7 @@ export const UserProfile: React.FC = () => {
                 </Typography>
               </div>
             </div>
-            <div className={classes.buttonWrapper}>
-              <Link className={classes.linkButtonStyle} target="_blank" href={user.html_url}>
-                Visit my GitHub account
-              </Link>
-              <Button onClick={handleButtonClick} className={classes.backwardsButtonStyle}>
-                Back To The List
-              </Button>
-            </div>
+            <Buttons href={user.html_url} onButtonClick={handleButtonClick} />
           </div>
         )}
       </div>
