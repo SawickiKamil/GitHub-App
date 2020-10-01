@@ -3,7 +3,7 @@ import { getGitHubUsers } from '../../../api/methods/FetchApi';
 import { IGitHubUser } from '../../../model/model';
 import { useHistory } from 'react-router';
 
-const useUserList = () => {
+export const useUserList = () => {
   const [gitHubUsers, setGitHubUsers] = React.useState<IGitHubUser[]>([]);
   const [loading, setLoading] = React.useState(false);
 
