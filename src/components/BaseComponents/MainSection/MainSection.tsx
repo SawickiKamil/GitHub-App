@@ -1,6 +1,7 @@
 import * as React from 'react'
 import useStyles from './MainSection.styles'
-import { Typography, Link } from '@material-ui/core'
+import Footer from './Sections/Footer'
+import Header from './Sections/Header'
 
 interface IMainSectionProps {
   title?: string
@@ -12,20 +13,9 @@ const MainSection: React.FC<IMainSectionProps> = ({ title, children }) => {
 
   return (
     <main className={classes.mainWrapper}>
-      <header className={classes.headerWrapper}>
-        <Typography variant="h1" className={classes.titleStyle}>
-          {title}
-        </Typography>
-      </header>
+      <Header title={title} />
       <section className={classes.sectionWrapper}>{children}</section>
-      <footer className={classes.footerWrapper}>
-        <Typography className={classes.footerLinkStyle}>
-          This tiny app was created By{' '}
-          <Link target="_blank" href="https://github.com/SawickiKamil">
-            Kamil Sawicki
-          </Link>
-        </Typography>
-      </footer>
+      <Footer />
     </main>
   )
 }

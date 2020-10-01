@@ -1,5 +1,5 @@
 import * as React from 'react'
-import useStyles from './customCircularProgress.styles'
+import useStyles from './CustomCircularProgress.styles'
 import { CircularProgress } from '@material-ui/core'
 
 const CustomCircularProgress = () => {
