@@ -86752,7 +86752,415 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"src/components/Views/UserList/UserListElement/UserListElement.styles.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
+
+var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a, _b, _c, _d;
+
+  return (0, _createStyles.default)({
+    mainWrapper: (_a = {
+      display: 'flex',
+      backgroundColor: theme.customPalette.lightTuna,
+      padding: '10px 30px 40px',
+      marginBottom: 15,
+      flexDirection: 'column',
+      alignItems: 'center',
+      boxSizing: 'border-box'
+    }, _a[theme.breakpoints.down('xs')] = {
+      padding: 10
+    }, _a),
+    bodyWrapper: {
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    avatarStyle: (_b = {
+      height: '25%',
+      width: '25%',
+      minHeight: 120,
+      minWidth: 120,
+      borderRadius: '50%',
+      border: "solid 4px " + theme.customPalette.lightOrange,
+      justifyContent: 'space-between',
+      boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)'
+    }, _b[theme.breakpoints.down('xs')] = {
+      border: "solid 2px " + theme.customPalette.lightOrange,
+      minHeight: 90,
+      minWidth: 90
+    }, _b),
+    loginStyle: (_c = {
+      color: theme.customPalette.lightGreen,
+      fontSize: 30,
+      fontWeight: 900,
+      marginTop: 10,
+      marginLeft: '7%',
+      textTransform: 'capitalize'
+    }, _c[theme.breakpoints.down('sm')] = {
+      fontSize: 22
+    }, _c[theme.breakpoints.down('xs')] = {
+      marginTop: 0,
+      fontSize: 20
+    }, _c),
+    buttonStyle: (_d = {
+      display: 'flex',
+      minWidth: 300,
+      height: 70,
+      boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)',
+      '&:hover': {
+        backgroundColor: theme.customPalette.darkOrange
+      },
+      '&:active': {
+        boxShadow: 'none',
+        transition: 'all .1s ease'
+      }
+    }, _d[theme.breakpoints.down('sm')] = {
+      minWidth: 200,
+      height: 60,
+      fontSize: 16
+    }, _d[theme.breakpoints.down('xs')] = {
+      minWidth: 120,
+      height: 40,
+      fontSize: 14
+    }, _d)
+  });
+});
+var _default = useStyles;
+exports.default = _default;
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/UserList/UserListElement/UserListElement.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _UserListElement = _interopRequireDefault(require("./UserListElement.styles"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var UserListElement = function UserListElement(_a) {
+  var login = _a.login,
+      avatarUrl = _a.avatarUrl,
+      handleClick = _a.handleClick;
+  var classes = (0, _UserListElement.default)();
+  return React.createElement(_core.Paper, {
+    elevation: 4,
+    className: classes.mainWrapper
+  }, React.createElement(_core.Typography, {
+    className: classes.loginStyle
+  }, login, "'s Profile"), React.createElement("div", {
+    className: classes.bodyWrapper
+  }, React.createElement("img", {
+    className: classes.avatarStyle,
+    src: avatarUrl,
+    alt: login
+  }), React.createElement(_core.Button, {
+    className: classes.buttonStyle,
+    onClick: handleClick
+  }, "Visit GitHub Profile")));
+};
+
+var _default = UserListElement;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./UserListElement.styles":"src/components/Views/UserList/UserListElement/UserListElement.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/Views/UserList/UserListElement/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _UserListElement.default;
+  }
+});
+
+var _UserListElement = _interopRequireDefault(require("./UserListElement"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./UserListElement":"src/components/Views/UserList/UserListElement/UserListElement.tsx"}],"src/components/BaseComponents/MainSection/MainSection.styles.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
+
+var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a, _b;
+
+  return (0, _createStyles.default)({
+    mainWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: theme.customPalette.graphiteBlack,
+      height: '100vh',
+      width: '100%'
+    },
+    headerWrapper: {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: '100%',
+      flex: '0 0 40px'
+    },
+    footerWrapper: {
+      display: 'flex',
+      flex: '0 0 40px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(30,30,30,.95)'
+    },
+    footerLinkStyle: (_a = {
+      color: theme.customPalette.white,
+      fontSize: 14
+    }, _a[theme.breakpoints.down('sm')] = {
+      fontSize: 11
+    }, _a),
+    titleStyle: (_b = {
+      display: 'flex',
+      width: '100%',
+      height: '90px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(30,30,30,.95)'
+    }, _b[theme.breakpoints.down('sm')] = {
+      fontSize: 30,
+      height: '80px'
+    }, _b[theme.breakpoints.down('xs')] = {
+      fontSize: 20,
+      height: '60px'
+    }, _b),
+    sectionWrapper: {
+      flex: '1 1 auto',
+      overflow: 'hidden'
+    }
+  });
+});
+var _default = useStyles;
+exports.default = _default;
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/MainSection/MainSection.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _MainSection = _interopRequireDefault(require("./MainSection.styles"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var MainSection = function MainSection(_a) {
+  var title = _a.title,
+      children = _a.children;
+  var classes = (0, _MainSection.default)();
+  return React.createElement("main", {
+    className: classes.mainWrapper
+  }, React.createElement("header", {
+    className: classes.headerWrapper
+  }, React.createElement(_core.Typography, {
+    variant: "h1",
+    className: classes.titleStyle
+  }, title)), React.createElement("section", {
+    className: classes.sectionWrapper
+  }, children), React.createElement("footer", {
+    className: classes.footerWrapper
+  }, React.createElement(_core.Typography, {
+    className: classes.footerLinkStyle
+  }, "This tiny app was created By", ' ', React.createElement(_core.Link, {
+    target: "_blank",
+    href: "https://github.com/SawickiKamil"
+  }, "Kamil Sawicki"))));
+};
+
+var _default = MainSection;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./MainSection.styles":"src/components/BaseComponents/MainSection/MainSection.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/MainSection/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _MainSection.default;
+  }
+});
+
+var _MainSection = _interopRequireDefault(require("./MainSection"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./MainSection":"src/components/BaseComponents/MainSection/MainSection.tsx"}],"src/components/Views/UserList/UserListElement.styles.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
+
+var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a, _b;
+
+  return (0, _createStyles.default)({
+    listWrapper: {
+      width: '100%',
+      height: '100%',
+      overflowY: 'auto',
+      '&::-webkit-scrollbar': (_a = {
+        width: 12
+      }, _a[theme.breakpoints.down('sm')] = {
+        width: 6
+      }, _a),
+      '&::-webkit-scrollbar-track': {
+        background: 'transparent',
+        padding: 0
+      },
+      '&::-webkit-scrollbar-thumb': {
+        background: theme.customPalette.lightGreen,
+        borderRadius: 0
+      }
+    },
+    listWrapperBody: (_b = {
+      display: 'block',
+      margin: '0 auto',
+      maxWidth: 900,
+      padding: 30
+    }, _b[theme.breakpoints.down('sm')] = {
+      padding: 20
+    }, _b),
+    spinnerWrapper: {
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  });
+});
+var _default = useStyles;
+exports.default = _default;
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/CustomCircularProgress/customCircularProgress.styles.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
+
+var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useStyles = (0, _makeStyles.default)(function (theme) {
+  var _a;
+
+  return (0, _createStyles.default)({
+    circularSpinnerRoot: (_a = {
+      display: 'block',
+      margin: '0 auto',
+      height: '70 !important',
+      width: '70 !important',
+      color: theme.customPalette.lightOrange
+    }, _a[theme.breakpoints.down('sm')] = {
+      height: '40 !important',
+      width: '40 !important'
+    }, _a)
+  });
+});
+var _default = useStyles;
+exports.default = _default;
+},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/CustomCircularProgress/custiomCircularProgress.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _customCircularProgress = _interopRequireDefault(require("./customCircularProgress.styles"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var CustomCircularProgress = function CustomCircularProgress() {
+  var classes = (0, _customCircularProgress.default)();
+  return React.createElement(_core.CircularProgress, {
+    classes: {
+      root: classes.circularSpinnerRoot
+    }
+  });
+};
+
+var _default = CustomCircularProgress;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./customCircularProgress.styles":"src/components/BaseComponents/CustomCircularProgress/customCircularProgress.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/CustomCircularProgress/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _custiomCircularProgress.default;
+  }
+});
+
+var _custiomCircularProgress = _interopRequireDefault(require("./custiomCircularProgress"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./custiomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/custiomCircularProgress.tsx"}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -88715,437 +89123,19 @@ var getGithubUser = function getGithubUser(username) {
 };
 
 exports.getGithubUser = getGithubUser;
-},{"axios":"node_modules/axios/index.js"}],"src/components/Views/UserList/UserListElement/UserListElement.styles.ts":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js"}],"src/components/Views/UserList/useUserList.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-
-var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
-
-var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useStyles = (0, _makeStyles.default)(function (theme) {
-  var _a, _b, _c, _d;
-
-  return (0, _createStyles.default)({
-    mainWrapper: (_a = {
-      display: 'flex',
-      backgroundColor: theme.customPalette.lightTuna,
-      padding: '10px 30px 40px',
-      marginBottom: 15,
-      flexDirection: 'column',
-      alignItems: 'center',
-      boxSizing: 'border-box'
-    }, _a[theme.breakpoints.down('xs')] = {
-      padding: 10
-    }, _a),
-    bodyWrapper: {
-      display: 'flex',
-      width: '100%',
-      justifyContent: 'space-between',
-      alignItems: 'center'
-    },
-    avatarStyle: (_b = {
-      height: '25%',
-      width: '25%',
-      minHeight: 120,
-      minWidth: 120,
-      borderRadius: '50%',
-      border: "solid 4px " + theme.customPalette.lightOrange,
-      justifyContent: 'space-between',
-      boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)'
-    }, _b[theme.breakpoints.down('xs')] = {
-      border: "solid 2px " + theme.customPalette.lightOrange,
-      minHeight: 90,
-      minWidth: 90
-    }, _b),
-    loginStyle: (_c = {
-      color: theme.customPalette.lightGreen,
-      fontSize: 30,
-      fontWeight: 900,
-      marginTop: 10,
-      marginLeft: '7%',
-      textTransform: 'capitalize'
-    }, _c[theme.breakpoints.down('sm')] = {
-      fontSize: 22
-    }, _c[theme.breakpoints.down('xs')] = {
-      marginTop: 0,
-      fontSize: 20
-    }, _c),
-    buttonStyle: (_d = {
-      display: 'flex',
-      minWidth: 300,
-      height: 70,
-      boxShadow: '0 16px 27px -10px rgba(0, 0, 0, 0.79), 0 0 24px 0 rgba(255, 180, 141, 0.23)',
-      '&:hover': {
-        backgroundColor: theme.customPalette.darkOrange
-      },
-      '&:active': {
-        boxShadow: 'none',
-        transition: 'all .1s ease'
-      }
-    }, _d[theme.breakpoints.down('sm')] = {
-      minWidth: 200,
-      height: 60,
-      fontSize: 16
-    }, _d[theme.breakpoints.down('xs')] = {
-      minWidth: 120,
-      height: 40,
-      fontSize: 14
-    }, _d)
-  });
-});
-var _default = useStyles;
-exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/Views/UserList/UserListElement/UserListElement.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _UserListElement = _interopRequireDefault(require("./UserListElement.styles"));
-
-var _core = require("@material-ui/core");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var UserListElement = function UserListElement(_a) {
-  var login = _a.login,
-      avatarUrl = _a.avatarUrl,
-      handleClick = _a.handleClick;
-  var classes = (0, _UserListElement.default)();
-  return React.createElement(_core.Paper, {
-    elevation: 4,
-    className: classes.mainWrapper
-  }, React.createElement(_core.Typography, {
-    className: classes.loginStyle
-  }, login, "'s Profile"), React.createElement("div", {
-    className: classes.bodyWrapper
-  }, React.createElement("img", {
-    className: classes.avatarStyle,
-    src: avatarUrl,
-    alt: login
-  }), React.createElement(_core.Button, {
-    className: classes.buttonStyle,
-    onClick: handleClick
-  }, "Visit GitHub Profile")));
-};
-
-var _default = UserListElement;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./UserListElement.styles":"src/components/Views/UserList/UserListElement/UserListElement.styles.ts","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/Views/UserList/UserListElement/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _UserListElement.default;
-  }
-});
-
-var _UserListElement = _interopRequireDefault(require("./UserListElement"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./UserListElement":"src/components/Views/UserList/UserListElement/UserListElement.tsx"}],"src/components/BaseComponents/MainSection/MainSection.styles.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
-
-var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useStyles = (0, _makeStyles.default)(function (theme) {
-  var _a, _b;
-
-  return (0, _createStyles.default)({
-    mainWrapper: {
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: theme.customPalette.graphiteBlack,
-      height: '100vh',
-      width: '100%'
-    },
-    headerWrapper: {
-      display: 'flex',
-      alignItems: 'center',
-      flexDirection: 'column',
-      width: '100%',
-      flex: '0 0 40px'
-    },
-    footerWrapper: {
-      display: 'flex',
-      flex: '0 0 40px',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(30,30,30,.95)'
-    },
-    footerLinkStyle: (_a = {
-      color: theme.customPalette.white,
-      fontSize: 14
-    }, _a[theme.breakpoints.down('sm')] = {
-      fontSize: 11
-    }, _a),
-    titleStyle: (_b = {
-      display: 'flex',
-      width: '100%',
-      height: '90px',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(30,30,30,.95)'
-    }, _b[theme.breakpoints.down('sm')] = {
-      fontSize: 30,
-      height: '80px'
-    }, _b[theme.breakpoints.down('xs')] = {
-      fontSize: 20,
-      height: '60px'
-    }, _b),
-    sectionWrapper: {
-      flex: '1 1 auto',
-      overflow: 'hidden'
-    }
-  });
-});
-var _default = useStyles;
-exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/MainSection/MainSection.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _MainSection = _interopRequireDefault(require("./MainSection.styles"));
-
-var _core = require("@material-ui/core");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var MainSection = function MainSection(_a) {
-  var title = _a.title,
-      children = _a.children;
-  var classes = (0, _MainSection.default)();
-  return React.createElement("main", {
-    className: classes.mainWrapper
-  }, React.createElement("header", {
-    className: classes.headerWrapper
-  }, React.createElement(_core.Typography, {
-    variant: "h1",
-    className: classes.titleStyle
-  }, title)), React.createElement("section", {
-    className: classes.sectionWrapper
-  }, children), React.createElement("footer", {
-    className: classes.footerWrapper
-  }, React.createElement(_core.Typography, {
-    className: classes.footerLinkStyle
-  }, "This tiny app was created By", ' ', React.createElement(_core.Link, {
-    target: "_blank",
-    href: "https://github.com/SawickiKamil"
-  }, "Kamil Sawicki"))));
-};
-
-var _default = MainSection;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./MainSection.styles":"src/components/BaseComponents/MainSection/MainSection.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/MainSection/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _MainSection.default;
-  }
-});
-
-var _MainSection = _interopRequireDefault(require("./MainSection"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./MainSection":"src/components/BaseComponents/MainSection/MainSection.tsx"}],"src/components/Views/UserList/UserListElement.styles.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
-
-var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useStyles = (0, _makeStyles.default)(function (theme) {
-  var _a, _b;
-
-  return (0, _createStyles.default)({
-    listWrapper: {
-      width: '100%',
-      height: '100%',
-      overflowY: 'auto',
-      '&::-webkit-scrollbar': (_a = {
-        width: 12
-      }, _a[theme.breakpoints.down('sm')] = {
-        width: 6
-      }, _a),
-      '&::-webkit-scrollbar-track': {
-        background: 'transparent',
-        padding: 0
-      },
-      '&::-webkit-scrollbar-thumb': {
-        background: theme.customPalette.lightGreen,
-        borderRadius: 0
-      }
-    },
-    listWrapperBody: (_b = {
-      display: 'block',
-      margin: '0 auto',
-      maxWidth: 900,
-      padding: 30
-    }, _b[theme.breakpoints.down('sm')] = {
-      padding: 20
-    }, _b),
-    spinnerWrapper: {
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  });
-});
-var _default = useStyles;
-exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/CustomCircularProgress/customCircularProgress.styles.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _makeStyles = _interopRequireDefault(require("@material-ui/styles/makeStyles"));
-
-var _createStyles = _interopRequireDefault(require("@material-ui/styles/createStyles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useStyles = (0, _makeStyles.default)(function (theme) {
-  var _a;
-
-  return (0, _createStyles.default)({
-    circularSpinnerRoot: (_a = {
-      display: 'block',
-      margin: '0 auto',
-      height: '70 !important',
-      width: '70 !important',
-      color: theme.customPalette.lightOrange
-    }, _a[theme.breakpoints.down('sm')] = {
-      height: '40 !important',
-      width: '40 !important'
-    }, _a)
-  });
-});
-var _default = useStyles;
-exports.default = _default;
-},{"@material-ui/styles/makeStyles":"node_modules/@material-ui/styles/esm/makeStyles/index.js","@material-ui/styles/createStyles":"node_modules/@material-ui/styles/esm/createStyles/index.js"}],"src/components/BaseComponents/CustomCircularProgress/custiomCircularProgress.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _customCircularProgress = _interopRequireDefault(require("./customCircularProgress.styles"));
-
-var _core = require("@material-ui/core");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var CustomCircularProgress = function CustomCircularProgress() {
-  var classes = (0, _customCircularProgress.default)();
-  return React.createElement(_core.CircularProgress, {
-    classes: {
-      root: classes.circularSpinnerRoot
-    }
-  });
-};
-
-var _default = CustomCircularProgress;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./customCircularProgress.styles":"src/components/BaseComponents/CustomCircularProgress/customCircularProgress.styles.tsx","@material-ui/core":"node_modules/@material-ui/core/esm/index.js"}],"src/components/BaseComponents/CustomCircularProgress/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _custiomCircularProgress.default;
-  }
-});
-
-var _custiomCircularProgress = _interopRequireDefault(require("./custiomCircularProgress"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./custiomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/custiomCircularProgress.tsx"}],"src/components/Views/UserList/UserList.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+exports.useUserList = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
 var _FetchApi = require("../../../api/methods/FetchApi");
 
-var _UserListElement = _interopRequireDefault(require("./UserListElement"));
-
-var _MainSection = _interopRequireDefault(require("../../BaseComponents/MainSection"));
-
-var _UserListElement2 = _interopRequireDefault(require("./UserListElement.styles"));
-
 var _reactRouter = require("react-router");
-
-var _CustomCircularProgress = _interopRequireDefault(require("../../BaseComponents/CustomCircularProgress"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -89329,9 +89319,7 @@ var __spread = void 0 && (void 0).__spread || function () {
   return ar;
 };
 
-var UserList = function UserList() {
-  var classes = (0, _UserListElement2.default)();
-
+var useUserList = function useUserList() {
   var _a = __read(React.useState([]), 2),
       gitHubUsers = _a[0],
       setGitHubUsers = _a[1];
@@ -89345,7 +89333,6 @@ var UserList = function UserList() {
       setLoadingUser = _c[1];
 
   var perPage = 10;
-  var title = 'GitHub Application';
   var history = (0, _reactRouter.useHistory)();
   var loadUsers = React.useCallback(function () {
     return __awaiter(void 0, void 0, void 0, function () {
@@ -89398,7 +89385,8 @@ var UserList = function UserList() {
             if (!(!loadingUsers && target.scrollHeight - target.scrollTop === target.clientHeight)) return [3
             /*break*/
             , 3];
-            setLoadingUser(true);
+            setLoadingUser(true); // TODO take it in to account - delay can be pointless here
+
             return [4
             /*yield*/
             , new Promise(function (resolve) {
@@ -89406,6 +89394,7 @@ var UserList = function UserList() {
             })];
 
           case 1:
+            // TODO take it in to account - delay can be pointless here
             _a.sent();
 
             return [4
@@ -89426,6 +89415,53 @@ var UserList = function UserList() {
       });
     });
   }, [loadingUsers, gitHubUsers.length]);
+  return {
+    loadingPage: loadingPage,
+    handleScrollEvent: handleScrollEvent,
+    gitHubUsers: gitHubUsers,
+    handleButtonClick: handleButtonClick,
+    loadingUsers: loadingUsers
+  };
+};
+
+exports.useUserList = useUserList;
+},{"react":"node_modules/react/index.js","../../../api/methods/FetchApi":"src/api/methods/FetchApi.ts","react-router":"node_modules/react-router/esm/react-router.js"}],"src/components/Views/UserList/UserList.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _UserListElement = _interopRequireDefault(require("./UserListElement"));
+
+var _MainSection = _interopRequireDefault(require("../../BaseComponents/MainSection"));
+
+var _UserListElement2 = _interopRequireDefault(require("./UserListElement.styles"));
+
+var _CustomCircularProgress = _interopRequireDefault(require("../../BaseComponents/CustomCircularProgress"));
+
+var _useUserList = require("./useUserList");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var UserList = function UserList() {
+  var classes = (0, _UserListElement2.default)();
+
+  var _a = (0, _useUserList.useUserList)(),
+      loadingPage = _a.loadingPage,
+      handleScrollEvent = _a.handleScrollEvent,
+      gitHubUsers = _a.gitHubUsers,
+      handleButtonClick = _a.handleButtonClick,
+      loadingUsers = _a.loadingUsers;
+
+  var title = 'GitHub Application';
   return React.createElement(_MainSection.default, {
     className: classes.listWrapper,
     title: title
@@ -89450,7 +89486,7 @@ var UserList = function UserList() {
 
 var _default = UserList;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../../api/methods/FetchApi":"src/api/methods/FetchApi.ts","./UserListElement":"src/components/Views/UserList/UserListElement/index.tsx","../../BaseComponents/MainSection":"src/components/BaseComponents/MainSection/index.tsx","./UserListElement.styles":"src/components/Views/UserList/UserListElement.styles.ts","react-router":"node_modules/react-router/esm/react-router.js","../../BaseComponents/CustomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/index.tsx"}],"src/components/Views/UserList/index.ts":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./UserListElement":"src/components/Views/UserList/UserListElement/index.tsx","../../BaseComponents/MainSection":"src/components/BaseComponents/MainSection/index.tsx","./UserListElement.styles":"src/components/Views/UserList/UserListElement.styles.ts","../../BaseComponents/CustomCircularProgress":"src/components/BaseComponents/CustomCircularProgress/index.tsx","./useUserList":"src/components/Views/UserList/useUserList.ts"}],"src/components/Views/UserList/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89872,7 +89908,8 @@ var UserProfile = function UserProfile() {
     title: title
   }, React.createElement("div", {
     className: classes.mainWrapper
-  }, !user ? React.createElement(_CustomCircularProgress.default, null) : React.createElement("div", {
+  }, !user ? React.createElement(_CustomCircularProgress.default, null) : //TODO create at least 2 separate components
+  React.createElement("div", {
     className: classes.contentWrapper
   }, React.createElement("div", {
     className: classes.userDetailsWrapper

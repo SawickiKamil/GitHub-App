@@ -21,6 +21,7 @@ export const UserProfile: React.FC = () => {
         {!user ? (
           <CustomCircularProgress />
         ) : (
+          //TODO create at least 2 separate components
           <div className={classes.contentWrapper}>
             <div className={classes.userDetailsWrapper}>
               <img className={classes.avatarStyle} src={user.avatar_url} alt={user.name} />
